@@ -4,6 +4,12 @@
 
 ## This is a solo Project.
 
+### Installation
+
+1.  Run this command in your terminal: `npm install`
+2.  In the project directory, you can run: `npm start`
+3.  Builds the app for production to the build folder: `npm run build`
+4.  
 ## Features:-
 
 1. Users can read important part of news on this web application on any device because of responsiveness.
