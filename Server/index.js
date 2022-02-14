@@ -11,10 +11,16 @@ import DefaultData from './default.js'
 const app = express();
 dotenv.config();
 
+
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json({ extended: true }));
 app.use('/', Route);
+
+app.use(express.static(path.join(__dirname, "/inshort-client")));
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '/inshort-client/build', 'index.html'));
+  });
 
 const username = process.env.DB_USERNAME;
 const password = process.env.DB_PASSWORD;
@@ -22,6 +28,6 @@ const PORT = 8000;
 
 Connection(username, password);
 
-app.listen(PORT, () => console.log(`Server is running successfully on PORT ${PORT}`));
+app.listen(process.env.PORT || 5000 , () => console.log(`Server is running successfully on PORT ${PORT}`));
 
 DefaultData();
